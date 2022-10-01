@@ -32,7 +32,7 @@ $(function () {
     variableWidth: true,
     responsive: [{
       breakpoint: 900,
-      settings:{
+      settings: {
         slidesToShow: 1
       }
     }]
@@ -48,7 +48,15 @@ $(function () {
   })
 
 
-$
+$('.header__nav-item').on('click', function(e){
+  e.preventDefault()
+  if ($('.header__top').hasClass('header__top--active')){
+    $('.header__top').removeClass('header__top--active')
+    $('.overlay').removeClass('overlay--visible')
+    
+    $('body').css('overflow-y', 'scroll')
+  }
+})
 
   $('.burger,.overlay').on('click', function (e) {
     e.preventDefault()
@@ -64,14 +72,14 @@ $
       $('.burger').removeClass('burger--scroll')
       $('.goup-btn').removeClass('goup-btn--active')
     }
-   
+
   }, 0);
 
-  setInterval(()=> {
-    if ($('.burger').hasClass('burger--active')){
-      $('body').css('overflow-y', 'hidden')
-    } else{
-      $('body').css('overflow-y', 'scroll')
+  setInterval(() => {
+    if ($('.header__top').hasClass('header__top--active')) {
+     $('body').css('overflow', 'hidden')
+    } else {
+      $('body').css('overflow', 'visible')
     }
   })
 
