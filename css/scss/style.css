@@ -995,6 +995,8 @@ body {
 @media screen and (max-width: 530px) {
   .body__inner .body__left .body__left-text .body__title::after {
     right: 30px; }
+  .body__inner .body__left .body__left-text .body__paragraph {
+    margin: 0 auto; }
   .body__inner .body__left .body__btns-box {
     flex-direction: column; }
 
