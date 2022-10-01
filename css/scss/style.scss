@@ -1142,7 +1142,9 @@ body {
 
 @media screen and (max-width:1100px) {
 
-
+  .goup-btn{
+    visibility: hidden;
+  }
   .heading {
     font-size: 58px;
   }
