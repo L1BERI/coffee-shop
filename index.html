@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="jquery.rateyo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="shortcut icon" href="content/coffee-icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/scss/fonts.css">
+  <link rel="stylesheet" href="css/scss/style.css">
+
+  <title>Online Coffee shop</title>
+</head>
+
+<body id="home">
+  <div class="wrapper">
+      <a href="#home" class="goup-btn">
+       <img src="content/arrow-up.svg" alt="">
+      </a>
+    <div class="overlay"></div>
+    <header class="header">
+      <div class="container">
+        <a href="index.html" class="burger-logo">
+          <img src="content/header-logo.png" alt="" srcset="">
+        </a>
+        <a href="#" class="burger-grab">
+          <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M6.13201 0.503906L2.42001 6.99991H1.00001C0.688008 6.99991 0.395007 7.14591 0.205007 7.39291C0.0160075 7.64091 -0.0469923 7.96291 0.0350077 8.26291L2.83401 18.5259C3.07001 19.3939 3.86401 19.9999 4.76401 19.9999H15.237C16.135 19.9999 16.929 19.3949 17.167 18.5249L19.966 8.26191C20.048 7.96191 19.986 7.63991 19.796 7.39191C19.605 7.14591 19.312 6.99991 19 6.99991H17.58L13.868 0.503906L12.132 1.49591L15.277 6.99991H4.72301L7.86801 1.49591L6.13201 0.503906ZM12 10.9999H14V15.9999H12V10.9999ZM6.00001 10.9999H8.00001V15.9999H6.00001V10.9999Z"
+              fill="#1B1B1D" />
+          </svg>
+
+        </a>
+        <a href="#" class="burger">
+          <span></span>
+        </a>
+        <div class="header__top">
+          <div class="header__top-logo">
+            <svg width="126" height="50" viewBox="0 0 126 50" fill="none" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <rect width="126" height="50" fill="url(#pattern0)" />
+              <defs>
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                  <use xlink:href="#image0_1_17" transform="translate(-0.00443906) scale(0.00336293 0.00847458)" />
+                </pattern>
+                <image id="image0_1_17" width="300" height="118"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAB2CAYAAAByH65QAAAgAElEQVR4nO2df4wd1XXHP1mtVquVtVqtVtbKcl3LtZyVaznUQq5FKHUtB1FqEYQQShGi1CGIEooiRBNKI6QIUUQpRZQiShGlJEIUKKWEOtRxKXIIcUjiOoQ4hriO4ziGOMYxi+uYzWJe/zjv9t037/44d968H7t7v9IRZt/MnTszd849vw9kZDRjAtgKPAW8AUwD9wLDvZxURkZGho0R4A7gJFBz0GO9m1pGRkZGA2uBg7gZlU1rezXBjIyMDICLgFPEmVUNuKtHc8zIyMjgPGAWHbOqATt7M82MjIyFjhXAcfTMqgYc6slMMzIyFjRGgX2kMasacLQXk83IyFjYeIp0ZpUZVkZGRtdxDeWYVQ040oP5ZmRkLFCsI83IXqQ93Z9yRkYDA72eQEbXMAo8Awy2McabFc0lI6MUMsNaOHgQWNbmGD+vYiIZGRkZIVyOX807E/itSDd0e+IZGRkLCyvw5wfWgNsCvxXpki7PPSOjCVklnN8YAB4HFnl+/wfECK/Fz9qeUUZGRoYHt+CXlo4BY6TFZC3p7vQzMjIWCtYStk9dVD9uV+AYm2boTk2sFcAGYHUXrpWRkdEHGAEO4Gc+j1vHHgscZ9MbHZ7z2cC3C9fcD1za4etmzCF8qNcTyOgI7geu8/z2DvBhJERhHGFYGlvmV4A/qGR2rVgF7MZva/so8I0OXXuhYAWwBglt+TUkHu8Y8DrwdeDt3k0tYyFjE2FJ6Urr2HWRY226p0PzHQRei1z74Q5de6FghHCGwyzwHKKKZ2R0DWNIvp9vYT5fOP7SwLEhRlcl7lRc+6EOXXuhYC3693wf7WVDZGSoEfL4nQKWFo6/MXB8kc7rwHzXK6+9qQPXXkjYQPPzPIrUNvM5ZZ7rzTQzFhJC0ew14FrHOQ9HzrFpouL5DqKryXV7xdddiCgyrI31vy9FJFyXunhL96eZsVAwSbh66Cue87YHzinuyFUHGYdixIxd5caKr7lQsYLw5nUOrXX9TyFOmYyMyhFiPDPAlOc8TaecGhKrVSVWEzYCbyfHYVWN/TSe727H7zfR+h58nuaMjNK4jjCz+aznvCHgdORcQ1V76V7xXOdFOmMryxDVOrQuLqTz7z1jgWMF4RZdr+JX5aYC53XSnuGreHp/hdfIaMViWpPg70E8y9DK0GrAs92fZsZ8xsuEGc26wLmxeC2bLq5ovpPAtGP8XeRE/G7A5ZiZRjIfXOEwudt3RmX4LGEmc2fk/JTa7msqmvMTjrFPI5JiRnfwGfTv/fM9mmPGPEMssXk/YqMK4Y7A+UUarWDOWzxjX1PB2BlpOA9dSInPWZORocYA8VSWcxXj7IiMYWhfBXMeBg47xn6hgrEzymEQ2UR8ZoUdvZtaxnzCrYQZjNazszcyjqEqDK8uae4MkvSc0TuMIFU4XO99cw/nlTFPcA5h5nIYnfqWEtJwV5tzXo1bfc0R7L3HA7jfeZZ8S2IIUSeGyQmZQzQH/7noQuVYSyPj2ORK6UmBq0DgIbpTDDDDj4343/lZPZxXEL1mAqOIAXkK+AhSq2cJEhsyWifj7n4fqeX0bv2/P0H65O1Bavp8H/hlF+febdwFrAz8/iRSs0qDFGPq6wnHFnE17pIlnwbea2PcjPYwjN908LfAd7s4l77HeqRTyyu014W4SDP1Me9CYozmU1zPeYTv/QRpyclXRsazqWzIwUR9XsXxiiVuMrqPu3G/6yz51jGKqBZ7qI5BxegQwrzmumt2FLmX0L1elTimpgZVDYmMLsv4H/KMmXMEe4uz8IfEbOnhvPoCixHjqmun7SY9h0h2cxGPEr63MhLL45ExDZUNafBF0ef0m95iEL9X8OkezqvnGEXUvlADz17Qw8ytkhmuhFSbTtNalE+DYrOHEKNPxQBu58AJqglAzSgPX0jMSSRtakFiK/AWvWdOPjqK3pvWS4wTLndcQ9IsUjGA/v2UqePuSxm6vsRY8xHLkZy+bq/BVfhtxgsy22AFsJPeMyQt3dqZx1AZniU8f19RvhjGI+PalBrSsBR3fNd+5pcTpCxuoJlp3NTFa/si2l/u4hzaRlVhDVcD9yKRs1Xgh8D3gB8hdpS3kZAFE7YwUqcx4DcRZjmFGHS19/QFpN3Rpyqac5W4lEajUxc+AP6o5NjLE479UeLYD+D2Mv05MueFjHOQb8TG7wB/3YVr31C/vgt/0oXr9w0WAY/QvrRzpD7OJYihvizGgAuQzh8xz5qhB9u4XicQK3dcQ5htWVwSGdumFA/rRZ4x5tQO3kHsQkJvLqShNhcZWCewDH/NtDu6cP2+wVJ0Gd8+OgNsQ3KWOhHAOoBE8z6vmMvNHbh+WTxHeK77ae95xcrSGDpNvOKDwRDu5OYa0tF5oWMCeRYmzemx+v9XVbYnBJ9p4Q16HzjeNUzhX6CaD+FBwlHbVeMs4JnIvPqhldTVxJ9fuyWEH1Rco4bUe9fiNs8YT7U51/mCVTQkqrvq/+5GLqWvpE8V62jOYB3l46oeQ0TUXmEj/ny8I/hbpXcDywmXOzYLvl28ELmGIW18l8/7dIZqC/NNAOczt8JSbBjJ+RjdkehH8XuDF0xj2rW4S9zG6AD9IcGAGIXvxz3PWJXOTiJWn6oqhuoLHCyStkzNi57zH6hgroNIOMTzNLyPx+iudF4lJumeGnYv7vdynLnL9JOwColhSmVWD9BbycWHK2gNbJ2hPaN/WVxL/DmGvIZaDKPP39TEeH3Cc25VgYi+Tta93FjmAs7C/14v6eG8uoYJ9F43Q6cR93w/Yw2tYnOZYMl2sBJhlKFn+UxF11oeuU7Kwl6EfwOrohb4uYG5datf3gB6x0M/wddGzaj5i4DLEAfMlczNewwiNSD0Lfq4pk4BK2lmxidoFduX0znbW6zzzQmqk/p8oQcuiqldd+E+7xjtSdTrEYO0zwN9An1FgWGkvM1NiIqk9ViuRUJHDiF2xXtIlxiHEabwcP38MilUSxHm/wJSFvtFRDMIwddcZBp5tnfTatZ5GZ2quhyxQz9PesJ9CsaRTelZpFXdbkSqVq0rV7+yEO2nM11QBhBD4iTyAVepZi6l2bZjPCgjNIdFPEa1EduubrtFqnJh3KC4Xg1RG0NBwGsD595Qcm4Xoctx1LSeWlo/rugcmiG+Nn32zRrCRLch3X92IIzkEVo1iQto1UheU8zbYATZEHySt29NLMZvY95HONUr5jV0FZAs2jlHkY3hJcoVfhwEbsTv1IuW607pXVdDXOFLSkzUhUWIV+gORMQtqh9n6tfbgdxkuzEty2iEapjGoV+g9R59nZRTEcrtMvRSRdcy8JXEdW06Ifg8jUdINypPEA85sSlmW1tGOFfyE4FzlyTMo0gmmPd8z++z6J7NCuL19n0e3IfbmP/ayLx8m6udh1h0HKUwrUnc1WmL37wXI6TFWr1F+5LVMGI7eZq4i99Fu2lPJ1+F3Mf2+v+7HuDhkmPbGEBE3dC9zFJ9k4ZtkWsa2hkYIxTbE2IGLpxNPMG7SCGVaICwlHaIRqdjF4Yo51iqIZ7wUChB6JkamPUXu9bdjnPPLjnvGvEa7q6u0YZMJsPFjt+Oo/sWlyHPLzbP4Ebqq0rootO0V5htHNmhyi4W142VDYybQj6iIRoRyUVql5G4JLcidSJWJ1YT3pAvTsdXOsZeuFqcj78RxiH8ayHkLQ091wfRVWVdj778TvF93Rf4PWbTHUU0hth1Zjz3sbvEnM14MUEjVJPtCURy9DnlYi3nRtGvS++GuJJwo84iXR6ZlA/DyIvuVIE/Ta7UKKICPoJIZyCq8DmImOzaWdqRJGNNUGuIvaHqeJ1B9FKrz8sXCr/YmDCXjfiZ1UHEuOvzdPk8zxvwP9dUL2uoJPUMsqHtQsIubkNsVmsC52jyVV05uc8iJgj7vbni2zRhMT6KmThC9soz9fsOtZ6LheO47vtFhC/YWkjQ3LA94YbLJg9vQrejtEtPBW7UpUIU21otRzwWNyCeiispj2F0/QB9mfXtYKXiuiGmsAj/xrLdcbwPa/AzzhM0pFdXW/sabqP+MH6V4hDphQOnPGPtxO+h9DHYaeKBmi6mYBu0NyLP+CFanU3jlN/wXyPuRAplRtyOODhCYTkhz6yLyduVT5ci3+82AjbqUPxLkfaTXrR+gHTPY7v0Jc9cXK2OztBY4GNU6/HUqNnaCPNUhNo6FcnV6Sa0i7qOd2GEsK3CLmrn28xcBmdfiEUNUT1T4YtX2+Y53hdAW0PnpHE1mj2KzhMeUkPNei773nwOhBoNLeBLgWPeIMwQXd/DSRIddynSlaYluo0x9LlsNp1APGYPITEtdyOi8Tb0Aa0um5BvoY0hkpSRBF6h/WYWGxRzPELnygj74nNcVIz7GsVvdPV9xC6EShHZku0Fkfl9BpFKNuNvdlFDateXgY9huWx7Q/jX4GHiG/oSJHbNdf4jkXN9kqCh3fhtW7F8wphj6FzCEfUa/uCLQVRL7CE9vEiPagetYwIRQbXjH0diOs4h7mlYg85oXxQrJ2i1pbyK7GxFteUo5UM2QiqLTReXHF8DbaecE7TuiiFjtjYYM1SfvmizK7OpFWmG1mDNcWTjKmu3cZV5vjEwh1iQ5xBxY3lIQgwFHR/A7bmrIWs75oAIVQ4xGkso/zVW0Tdmd9saOR8IB83ZNEta5O4ocTe+oWnkAymToDmGfJg+MdglDVxKsw7+BP6W8GU7i8TE9hppdqAy0MY6vVo4L2S70saJhbyLNURSMmjHPW9TMcXqLJrDdEISs08VKkoMY/iLLR4kbh/y5Ura5FOrQoUYZ+r368sWiBWAHMQf0jSDbNyhDWhXZPw1xNPRpolkeAyj73KTWuYkVonA0HM0SzHjsUl7sAG/tOVyL69BPui9iK0nZMdLrRSwOTCWvQg6kR1gQyvdFj1qnw8cq80VDW2Exc48LukqJbC0RqsEsZRWtSuU73iVY8zTtKp3LtuToZiEoA3irdGaOxlSQ821XfdQQzafmG0sJP0YZudzHh0nLMykhDEEHXpblYPMksZEQsZam4pi+mU0IsH3IN6hlIDQ1bgZcMwuAOEk4ZRONYvQBUZWkSwcwgDlNqNB/Iz/LXShF74yJ4bsmDaXCmOM7Ocg0m+sfHSN1nAWV8BsKIHaNeeidD2K39t5lPCzucdxTsg4vqdwfiil62nkffucFjF12PfdmPsaws8Ma8S7AWmDl2vIRu5NEdOUEtZ+8AbrlWO6cqNMuMEMjQf4GmkSjisq+zi6D80nTqdIlyGDsKFulKpdoZiHITvV4tLAcZoSLzEpwpbmfG3NiqrbICI9+XbpYmClLzI/lIrisg0Vw1lCTMO3AQ3gXhMmpc3HjG3PdShf8Ayy2YbK/oSkq1ik/Q2IGuw7xueNN3B5BXcSzqhxxveNoq+TpHVhD6Cr+e7KN1pq/f4GspiN6/oYaR47FyPWGIp9Rkdt2EEohcWm85CPUEMDFqUgJaTB3iFD9eVD72AUnRpnF3V0xV25UlAg/Gztj2YYt6QRSvFwfQunafbeDhC28bjsr2O41+JbNDbhUHK6qRYR8rSa57XH83uodNLKwD3VaEhXvvi4acKGfJdz4gDyrC4PXHeLazCfN8F1AS009cl9rtXLrGPslA+jtu5FL5W4SqpcrTzX9dHdpzhvHH2a0XHkgziloJN1mkZsEcfr1zmC2DT2ITvWY8jivBxZ6CmR0EZFG8YfjR764Fei26jsmvGutXIYvzrwdGDcC6zjPuM55rbA/F3G7GJ4RGgDcEXVT+GWCI/QzPhH8KuZixB1zXfdkwhTDM3NF3x5FvEcxpsJf9Mhs4brvJM0p/P5TCfOFDuNF6uGvi1QaAeyF73PJmW70V8s/GYMuNpOwmOOa2sbAAzR6sm5UXGebxfqBc2gZ5626uHzlNZwN5cYRBiE1lZ2f/28c3FL975UnyH8KtE0jTV1SeC4kHTo8twVvYMhu5xt3hioPxMXEzqA29HiYvZv1H8LmW2Mbcq39vZ57ncr/o3J0AlkPfi0sNP4k8qvcxw/Sysj8tm2nNECPhEy9uJ8sCUkH4XiS+yk428XfluELMRYCRQbRdtATNcuwu4KE6tNn9L3r9/IlnpC91GUjM8nLcbOfNjrcX/MIcNwyCGyDWF0oYKTRwNjL6b1o3S56EPJ0SsQRnU+/lCeWfzqk2tzuY+wt/kAsmEM4ZfQirbnSfTe112EJbD7ceMWz/GuJGYXD3KGzYwQj4moITun1ksXi5aPldqwH+QRx++mVZWmQsQgrbt+KsMCkaweJmw/msQftTwXyFa/Q3aiQzQSxkMu6tDO/Sjujyvm1AnFaWnssKFCeq7wC9fGGoop3IXOM+xKYnaFkJjuQ6EN4bL6+aHIc7Pml9SvU2XBgeImvgh/hYdiri74VfeWxOlBRK/VMKJvAb9SHLeMeP5WTLV83/r3JLIbvW39bQfizboA+EFkrHFaPSOpLdgB/kZxzCPoSph8kUbr9g9obuNujOqDiB1pUZ2Gkc1lFFl0VVY+Nfi+9e9v1eflus4ywmr1L4HPAb+BPwzElUT+L8AnI3P8eeA3jV1zFfIM3y38fSOtoQ7/BnzVMcYP8HsZtU6pa5Fv72vIGj8LaaFXxOcQFdZnf/pv4Mn6v0O1vq5A7tHXuecXNNZYKux1sw6x+flKMN1U/+27iLR8Fu5n+ffAl10DaOOvtLFCLp3Vpjf8p/4/inEqxYYIpjGlpr+ay+jeiXrUVzqu46KUsBAfFiFM4yJEXdAUfdNQkbmEjNs+eonGYvXtnC7yqRUuaFuV+ai4y6+j1d51Gn8d/5B9r0oyzyQUQmF7dbVhREXah7wzbYC3TdPIprYY+W5TylL5KFgK2de1t0ja9kCxRR7LMYJWJlqMhh6v/12TeOvKJq+6RfgSdP0aj6GTwFIxjHhi2i2AWHzHS9BXnX2N1sj3ceKBnidJr/+9kbAZYwfhonM1RAq4GbGXusay49Fc0DDj3cgzDeUbumiGZjueLxm8aFoZJr1v6L00pKrz8DOc47jf5SyiBmvMSjGaRbSvoPagyWeqoe+CE9PfXWJvEcsc59n5ZiPIzcVsYatofQHHqF6deskxXxe1U0tLgwnaSxx2veMlyMfvWpDHkA0hZAIo5vAZOlMft0w3GTPuM4h0eRi579tpqBcpsWdF0sbarUfu/zXkWRxENtFbaV3nVxCXhGcRBupSp26jeS0fwJ2Mf73yHnfhVl83IM9ytn69vQgTWYo+msDQ44jUFbMtztaPVcVXasVATZujxZExptHHTxWZwBEaIvoi5GEWQx5sLMXtIi5bcsSHmApsL5BuYJh4MX8XnSGccD6GeIm3IJvHSvROmFHEMHwXsoCvojyj0iKUnhKiJ+iMfRBk3V6CSDVPIxvuswgjMDFzISxBYiYvJVyG6Fb8Es9OdNrSCK223zXoVL6jNG/OSxGt6UFEW9qJ3P89yLpIyhfWVMA8he4lxna1EIMpwiUGH0F285H6/7uqJ5hcJ596FMt1SsFK4jEshmJdSarEJOleoGNdnF+3EKurVSSXB2uuwjCJuxEGdhnV9Nbcgl/NP1K/Vsj43zY0do/jyrFi8VcuV24IvjgRU0PoMYRprEN2npgB+hjV5u1pVcFud5OGtIJ9NaRI4XzEVuIqyRGaI+QzwhhHhIJHEJX4s4j9qysdpDWNCULBdjZi+vNNiXMbQ5fmoSVtpL4GNyuvqak62QkMkhYTVrbW11zAGsRedhhRlUz0/w7E4F9lU96MDkMTbKdlWLFa7bG+dZsRkdKuvLmE9t3YNdLL4oSg1eVrxLuGdBKaahGdYOb9jCG6JAlkdAYad6TWvhFqBlAjXAK4GGVsx2IsJr2IW5FS1VEfBtD3gPN16O0WtA6BGuVai2dkdB2auA2t0T1WN9zHsHx1l4oJsJdRzvMTLbeaAE0T1BpijF9e0TXLIlRorUibPWNkZPQNBmhNUXBhBF3A47Tiei58yvP3YpzJk8CHgT9EUhreU8wJ4M8Ip3RosR5d4CvAXwA/ruCa7UATimLws47Noju4FMnx20N1Kt/F1pjZztUn0Ko3Grd8LM3HFTjp60iskYqGkQTos5FAQpfHM7WFug9D6G1pmgaV3YA20O8Mc/+DNKlRM1THsOzCcsW4p+upXo2+Gini1w9rpy8xiF7yWA58L3LMLyK/f9gzrp1w+R6S0Pmnirm9hySiTiIVIlwMrqqYkLvwJ3QW8SmaE5p7Be29vw38bycnMs9gcjhB1ui/VjDmuTRyY98F/qmCMecdBmmughCC5mP9SeR3TXTzm8BHFccZrEEM9L6uM6sRptiOenYu7hbpLvwj8M02rlUltJ14ftrRWcw/vGP9O7ZJa2GbZqoac15CG0+kSTQejYyx23GOq16VpiLoBGLkd3k5T9OsHrZTnWEUfQJwJzs3l4E2hi2YHT9H0G2V8DzSO5/HsIF4gcgFjUH0taHWI7p1SNV5F/ghfmlsDaL+/dL62/vAv9Mco3ULjZpLr1t/H0FKe/wh4jH02V0+iUgXpnb371JexL4ffd7bp9E5MbqBIfQS1pudnEiFOB/4OPI+PkDqMD1OvCaawQhinP8Yoi6/h0T4f5E0p8wEjcYRr+PWUoYRo/3HEFPF+8i39jzwn47jR2kUpJzE7wQ5H/h9Gu/254g55Mu469VN0IgF/LJnriCMcjmyFv5Dcd13kMqrT1KNQ0uNlPb0GsP745ExXDvIavwBrIcQL80+4nl7szSkKTuPrNjNWItQd9si9TrmqohJ9HPX1KnvJZYTTug2DTdCEtYW/JVEpnE7hHwSll13ar3jvHMJh9/soXVTn7J+d9WznyJcmvkg7oYNsbkaPFs/5oXC35dHrlumPFBbcKlkPrpZMV4sWNGXYBpq9aOhQzS/kGLia6qqtgR9falQsbdeIaXIXKfL3rSDxTSr5NuRWlTXItKvScQ1NcFdDMteW/sRyfsaZC3aTKz4HHwMa53192IZmU00siBOI7l219XJbhBxhGYn0Srrt6KquZbmeMntiE3VjGk2+zO05kSG5mrD1LHbbv3N9oyfQYQR4x29n+bUr67G8YWK9tukSZC1dwrfTuBz215Eek30U0haiVlQo7hTUjT1322kdKhN6QbdLaQ0w3C2UuoT2BK7q1vzJM011osMa5JG2MwTtDKzMRpJ7CdpLrGTyrCGaDDXo7jXnB0kbTfl9TGsARoVVWZxp3qtp/HdnCjcQzsMy2584drUllnX7WouaiwH0CaNtzDWQcXZHLGOCSSaPFbs7K36vO3gyJVIYbMaItoesI5PycbX9FRMYeK9QEqVy6orsFYFu5BjqKjeMhrOlyLDMulioST0cRoSzC3W31MZlp1ZEMohNZKWKS8MfoZlbzyh4gHnW8fZwc3tMCw7rtJ37k2IdNtVk0hKdUZNzSBX9w+bNDc3hLy46xEbxQOIGHoT7lIWy2mI9+aF2XYPbYnnFehrXNVIl9y6BVdpaB+FCvf1EvbGEbK/QKM1nM2wBmlsfKHWYdDIZbU3oFSGZT56V6cnG8sQ6WUzjXJHPoZl3uMp4lU/jKRpe+PbYVgbrHP3Rs7vCszD+gYSOKiJdr4GkYBCgYb/TLi77gWIXh4KRP0V8PU6xTCMJEcvQQJO/67+91S71WB9HG05mL9C76HqNrS5kz+jf+N+PlL/7/vEg5ZfRhiMjUkaEvjvAb8eON98jKuRdfB+4FgfjFPqO5HjfkI8ZtHAbIjfIJ6K9rX6HFYR9+hr8E3Eg7+lPo/diGf2m4gZ6VtIVEBPYDcvjVGIGRm8GBmjShHSJF0XC+XZVTc1KuHd6J/BPvq7TEmoX6BNZT2o3cAjyBwPxg5EQgiKEpYtXaSQYfapEpax52hrwtvwSVjGJvaEYgzbDGCyHNqRsECY9y34YxH3ITbcKgtjemFf5HFadygfbkQMhqEo+QfwtxsHYSAXAl9RXtOHceSB/RRJcjZYTXNqyv9ExtlEmnv/j9H1aewFTNslDfpVuoKGlKPZGFwfjB2R/hXia8BAm1TvQ5W5gEZK0oxpntMHlJMQXXgf+EtEmzgb+U5+G/FCTyBOtnsQCfbjFV1ThQF0HWsNxfrraZoAHKX9si+mZ1sxFuRW6zrHCe8AK0jzTt7nHqZvsBT9vTzaozlqYL/DmJ3NHGtLWKZZSQ3pWpOKVAnLhADEtIdJGhu2yaP1SVhGU9mjmK/Rkuz6dVoJ6zncEpYPQ4ih386m6HqxSm2tJ0Ox2AtNPaaUxhQu7EAWqS1NTdCsDj4YOH+MtIqmB+lNyeMUpDTUvNczRj9gE415xtKrTNWRopfQfPCPRc6/AmHed1p/S2VYhmGcItxB2Xxnp4kzrDusv6/Ej2Eaa/4Zz1x9rfoGaGzYNsO6HgkRCuXR2pvjnYHjOoJJdCWTDR0mLiHFQhxqiO2oLI7QvPsMIjucPf7ZnnMHidvaihRSc/sFsWYgNsW8Z73EIA2p/yB+Kct2/RcZlh3I7JMw7PgpW3pOZVgXW3//gudai6xr2S3nfAxrtfV3mxEVYVf7tRva2gzFx/Rt25fNsIxN9wR+BjxmnXuL55iO4mH8i9tFOwnr15s85xWpbE3xaRoNVZch3iJ73C95zhtE30TWUC+635RBSot4rd2yV7CZ0V6aN58RxGtth6EUGZYdrX0cuV9bQl6JfKQ1ZLO2q8SWiXS301g+T7PnfYrm9WmnuoUi3R+wfnua5ljISZrLi7s0FmOaOUpzeMgixKRyhoZ0ZjOss61xd9IawrOM5k7v2mbLlWIF/sXto/sjY9opCSEqo54cQySs22ktBPgG7tAGE76Qco8H6G+voA17gccoFMTbL7DVohqShvUazekqRsJwpeZM0RyIfLJ+/oHCuFcXzivDsJbX52d+P+W5VjE7IsSwhmjVGvYjDNzWiPbilkKLppkD9WPN9/IqjdjJog3rnsK5h+vHF+3TXVcHbRQbQmgoVFjKPpUAAAOESURBVBJmMfq8vO24W3D74EuKfRl3ieAxyrVzd7X17lcYA6qGzunRHFNhSiAX5/8qYuy9CvkAp3HbGI0k4uphsBN3etLl9TFP0sqwTtXJpWaOIx+6q5ntK7g3iVX165zCX7bmWtz21sOIChqym11Da/bIDGK3m0AY1klk7RSxFfezryESZc+l9DH83V1DFFKZUqLpjyEPSYNip56jyO7lUlOnaN3pNKRJ+u4n+BaXi2IR5P2GZYiZYSPNZX8GEMk55v4fRlKRNiPMOmSDDY05oLzWVP1a5xGvsW+uF8NS5P43ISqtNgZqyJrPBpqZ8ADxe5pEntlmRF3U9HnoGlLy6Wx6BD+nT/VCvkw84HM1sus8jXB6X7T+NeirUhR337mGlBCNueBEyMhQoYzqVEP0Y1+SdKqh24x3C+Xy9jYTrucTosOkdZ7pB4yhb/JaQ2KBMjLmBVJqQhXpFG7VbAiJnSozZg0x9j2F6NxbENF0CmGQqxDPy2bEpra3jevM4g+H6GesJe0+e25/yMioEim2Jxd9m1Yj4giNGkT9SnP1Q7bLjGhIkxeakTGncD3tM4DtNNtLhtGHO3SbehIAVxGuJe1eXV6hjIw5j1gbei29grigjYfitorGrYrmSnCoD6nPc5qwOzwjY86iKqZVQzx2zyDMawv6llSZWYVRRmptpw1aRkZfI1ZNtAzNUi4+qkrSVFKdC0jNjawhzz4UyzOMOCA0XZMyMvoOV5JWRrjfqZ8TgFNhp4Wk0NM0p3UsQRwPT9AcsT1fGHvGAsMa9FUt+5VOoa/1PhcwSHsbyQyimh/CH8t1omt3k5FRMRaRlmjbT3SA/u0WUxZ2Am2naD60tc9Y4NhIfxjNtfQo6Q0q5gIuonPPbBqppjEfn1vGAsQgEq9VNjK+G3QEKbI2X2EXe6uCZhFP7iXoOiplZMw5jCHVDfqJcc0ipUX6Kru8QyhrdLdpD+KISCnzk5ExpzGCeBN7mYJzBilDq+lWPV9QNlbuGKLyzcX8yYyMSjGFJCOnNHtoh04iEtVCYlQGS2i0bY/RDLANsX31e2ONjIyeYA3SheM5qlUbTyIerMtp7qCzEBGqZTaD5HVuZWGoyBnzCB/q8fUHkBrya5DKib+FVIBchjCdEZrrc/8KaXL5DvBj4E2kGsR3gO/SfgPM+YQLkLzCNcjz+i9kk/gq/d08NSPDi/8DophM0Y8z+JIAAAAASUVORK5CYII=" />
+              </defs>
+            </svg>
+          </div>
+          <div class="header__top-content">
+            <ul class="header__top-nav">
+              <li class="header__nav-item">
+                <a href="#selling" class="header__nav-link ">
+                  Cafe Menu
+                </a>
+              </li>
+              <li class="header__nav-item">
+                <a href="#app" class="header__nav-link">
+                  About Us
+                </a>
+              </li>
+              <li class="header__nav-item">
+                <a href="#contact" class="header__nav-link">
+                  Find Us
+                </a>
+              </li>
+              <li class="header__nav-item">
+                <a href="#alow" class="header__nav-link">
+                  Alowishus Catering
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="header__top-btns">
+            <a href="#" class="grab-button">
+              <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.13201 0.503906L2.42001 6.99991H1.00001C0.688008 6.99991 0.395007 7.14591 0.205007 7.39291C0.0160075 7.64091 -0.0469923 7.96291 0.0350077 8.26291L2.83401 18.5259C3.07001 19.3939 3.86401 19.9999 4.76401 19.9999H15.237C16.135 19.9999 16.929 19.3949 17.167 18.5249L19.966 8.26191C20.048 7.96191 19.986 7.63991 19.796 7.39191C19.605 7.14591 19.312 6.99991 19 6.99991H17.58L13.868 0.503906L12.132 1.49591L15.277 6.99991H4.72301L7.86801 1.49591L6.13201 0.503906ZM12 10.9999H14V15.9999H12V10.9999ZM6.00001 10.9999H8.00001V15.9999H6.00001V10.9999Z"
+                  fill="#1B1B1D" />
+              </svg>
+
+            </a>
+            <a href="#" class="button">
+              Buy gift vouchers
+            </a>
+          </div>
+        </div>
+        <div class="header__body">
+          <div class="body__inner">
+            <div class="body__left">
+              <div class="body__left-text">
+                <p class="body__title">
+                  Alowishus
+                  Delicious
+                  Coffee
+                </p>
+                <p class="body__paragraph text-grey">
+                  A drink from the ‘My Alowishus’ bottled brews range OR grab one of our delicious coffee’s.
+                </p>
+              </div>
+              <div class="body__btns-box">
+                <a href="#" class="button body__btn">
+                  Download App
+                </a>
+                <a href="#" class="body__btn-link">Shop Coffee</a>
+              </div>
+            </div>
+            <div class="body__right">
+              <div class="right__img-box">
+                <img class="body__glass-img" src="content/glass.jpg" alt="" srcset="">
+              </div>
+              <div class="body__right-rating">
+                <div class="rateYo"></div>
+                <p class="body__right-text">
+                  4.9 out of 5 Overall Star Rating for All Local Business.
+                </p>
+              </div>
+              <div class="body__right-logo">
+                <img src="content/gold-img.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section id="alow" class="main__alow alow">
+        <div class="container">
+          <div class="alow__inner">
+            <div class="alow__heading heading-center">
+              <h2 class="alow__heading-title heading">
+                Explore Our Alowishus
+              </h2>
+              <p class="alow__heading-paragraph text-grey">A drink from the ‘My Alowishus’ bottled brews range OR grab
+                one of our
+                delicious coffee’s.</p>
+            </div>
+            <ul class="alow__cards">
+              <li class="alow__cards-item">
+                <div class="cards__heading">
+                  <p class="cards__heading-title">
+                    Our Catering
+                  </p>
+                  <p class="cards__heading-paragraph text-grey">
+                    Alowishus Catering, delicious drop off Catering
+                  </p>
+                </div>
+                <div class="cards__image-box">
+                  <svg width="150" height="148" viewBox="0 0 150 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M125.625 77.7087C124.944 76.9296 124.367 76.0796 123.892 75.1821C123.658 99.3037 103.965 118.857 79.7891 118.857C55.4681 118.857 35.6811 99.0698 35.6811 74.7488C35.6811 50.4279 55.4681 30.6409 79.7891 30.6409C100.711 30.6409 118.278 45.2847 122.779 64.8604L126.773 35.1669L126.863 34.4993C115.489 21.2161 98.6066 12.7828 79.7891 12.7828C65.1083 12.7828 51.6058 17.918 40.9772 26.4822V27.1234V27.691V40.268V40.7673C40.9772 49.1681 36.6231 56.8378 29.7335 61.2204V110.382V111.229C41.0142 126.665 59.2485 136.714 79.7891 136.714C101.373 136.714 120.412 125.619 131.51 108.834V107.926V81.594C129.259 80.8615 127.218 79.5307 125.625 77.7087Z"
+                      fill="#64646A" />
+                    <path
+                      d="M79.7891 38.1372C59.6013 38.1372 43.1769 54.5611 43.1769 74.7493C43.1769 94.9376 59.6008 111.361 79.7891 111.361C99.9773 111.361 116.401 94.9376 116.401 74.7493C116.401 54.5611 99.9768 38.1372 79.7891 38.1372Z"
+                      fill="#64646A" />
+                    <path
+                      d="M149.833 6.23393C149.833 3.0437 147.247 0.457642 144.057 0.457642C141.164 0.457642 138.718 2.59695 138.332 5.46386L129.892 68.2034C129.67 69.855 130.172 71.5216 131.268 72.7759C132.365 74.0302 133.95 74.7493 135.617 74.7493H139.006V142.045C139.006 145.081 141.467 147.542 144.503 147.542C147.538 147.542 149.999 145.081 149.999 142.045L149.833 6.23393Z"
+                      fill="#64646A" />
+                    <path
+                      d="M33.4814 7.45372C33.4814 5.38338 31.8038 3.70581 29.7334 3.70581C27.6631 3.70581 25.9855 5.38338 25.9855 7.45372V28.1917H20.4886V7.45372C20.4886 5.38338 18.811 3.70581 16.7407 3.70581C14.6703 3.70581 12.9928 5.38338 12.9928 7.45372V28.1917H7.49583V7.45372C7.49583 5.38338 5.81826 3.70581 3.74791 3.70581C1.67757 3.70581 0 5.38338 0 7.45372V41.2679C0 48.5733 4.70588 54.7969 11.2437 57.0771V142.045C11.2437 145.081 13.7049 147.542 16.7407 147.542C19.7765 147.542 22.2376 145.081 22.2376 142.045V57.0771C28.7755 54.7969 33.4814 48.5733 33.4814 41.2679V7.45372Z"
+                      fill="#64646A" />
+                  </svg>
+                </div>
+                <div class="alow__btn-box">
+                  <a href="#" class="button">Order cathering</a>
+                </div>
+
+              </li>
+              <li class="alow__cards-item">
+                <div class="cards__heading">
+                  <p class="cards__heading-title">
+                    The Food
+                  </p>
+                  <p class="cards__heading-paragraph text-grey">
+                    Our entire menu is available as dine in or takeaway.
+                  </p>
+                </div>
+                <div class="cards__image-box">
+                  <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_99)">
+                      <path
+                        d="M45.3188 104.313C41.3523 102.038 38.6721 97.7634 38.6721 92.8711C38.6721 72.678 55.1001 56.25 75.2932 56.25H90.3845L91.0952 44.5312H5.58496L11.727 145.871C11.8678 148.191 13.7892 150 16.1135 150H43.0781C40.3132 146.325 38.6721 141.759 38.6721 136.816C38.6721 131.118 42.3068 126.254 47.3788 124.417C45.5809 121.66 44.5315 118.373 44.5315 114.844C44.5315 111.311 45.5832 108.021 47.3845 105.262C45.9517 104.939 45.1563 104.622 45.3188 104.313Z"
+                        fill="#64646A" />
+                      <path
+                        d="M48.3353 35.7433C48.3387 35.7433 48.3421 35.7422 48.3456 35.7422H92.2852C94.7124 35.7422 96.6797 33.7749 96.6797 31.3477C96.6797 28.9204 94.7124 26.9531 92.2852 26.9531H56.4526L68.2983 8.78906H83.4961C85.9234 8.78906 87.8906 6.82182 87.8906 4.39453C87.8906 1.96724 85.9234 0 83.4961 0H65.918C64.4325 0 63.0478 0.749588 62.2375 1.99356L45.9595 26.9531H4.39453C1.96724 26.9531 0 28.9204 0 31.3477C0 33.7749 1.96724 35.7422 4.39453 35.7422H48.3192C48.325 35.7422 48.3307 35.7433 48.3353 35.7433Z"
+                        fill="#64646A" />
+                      <path
+                        d="M47.4609 92.8711C47.4609 95.2984 49.4282 97.2656 51.8555 97.2656H145.605C148.033 97.2656 150 95.2984 150 92.8711C150 77.5246 137.514 65.0391 122.168 65.0391H75.293C59.9464 65.0391 47.4609 77.5246 47.4609 92.8711Z"
+                        fill="#64646A" />
+                      <path
+                        d="M62.1094 106.055C57.2548 106.055 53.3203 109.989 53.3203 114.844C53.3203 119.698 57.2548 123.633 62.1094 123.633H135.352C140.206 123.633 144.141 119.698 144.141 114.844C144.141 109.989 140.206 106.055 135.352 106.055H62.1094Z"
+                        fill="#64646A" />
+                      <path
+                        d="M145.605 132.422H51.8555C49.4282 132.422 47.4609 134.389 47.4609 136.816C47.4609 144.086 53.3752 150 60.6445 150H136.816C144.086 150 150 144.086 150 136.816C150 134.389 148.033 132.422 145.605 132.422Z"
+                        fill="#64646A" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_99">
+                        <rect width="150" height="150" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="alow__btn-box">
+                  <a href="#" class="button button-padding">food menu</a>
+
+                </div>
+              </li>
+              <li class="alow__cards-item">
+                <div class="cards__heading">
+                  <p class="cards__heading-title">
+                    The Gelato
+                  </p>
+                  <p class="cards__heading-paragraph text-grey">
+                    Life is like GELATO, enjoy it before it melts.
+                  </p>
+                </div>
+                <div class="cards__image-box">
+                  <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_1_112)">
+                      <path
+                        d="M116.158 51.6431C114.487 50.5733 113.615 48.6526 113.937 46.7507C118.043 22.3889 99.2328 0.345636 75.0324 0.0040446C49.8344 -0.3535 30.5414 22.3538 35.0644 47.2453C35.4022 49.1156 34.6421 51.0331 33.1281 52.1279C28.9395 55.1591 26.6247 60.058 26.9375 65.2254C27.7539 78.7148 44.6458 84.2447 53.3326 74.0623C53.4546 74.1374 53.5797 74.2156 53.7017 74.2879C54.978 75.0605 55.7381 76.3803 55.7381 77.8195V84.2853C55.7381 86.7378 56.711 89.0273 58.4783 90.7321C64.1099 96.165 73.656 92.2689 73.656 84.1289V69.4765C73.656 65.9073 77.8226 64.0148 80.3627 66.4832C81.1385 67.2371 81.5639 68.2443 81.5639 69.3201V76.8276C81.5639 81.8523 85.7127 85.9598 90.8513 85.7837C97.6049 85.5331 99.0407 80.4284 99.4129 76.5523C109.14 83.4198 122.636 76.7237 123.08 64.866C123.277 59.5666 120.625 54.4991 116.158 51.6431ZM68.3382 20.8908C66.2014 21.6028 66.0665 21.9791 65.1256 21.9791C62.4501 21.9791 61.6559 18.3308 64.0683 17.2087C64.9442 16.8021 65.8513 16.4423 66.7679 16.1389C68.0817 15.7041 69.4956 16.4173 69.9304 17.7311C70.3621 19.0421 69.652 20.4588 68.3382 20.8908ZM52.66 37.1223C51.0356 37.1223 49.8397 35.6021 50.2264 34.0224C51.1179 30.4 52.8446 26.9528 55.2282 24.0593C56.1041 22.9926 57.6838 22.8393 58.7505 23.7152C59.8172 24.5942 59.9705 26.1708 59.0915 27.2375C57.1833 29.5585 55.8007 32.3144 55.0875 35.2173C54.8091 36.3594 53.7862 37.1223 52.66 37.1223ZM104.392 83.97C105.863 84.2469 106.714 85.799 106.162 87.1907L83.7752 143.717C80.4643 152.093 68.4499 152.097 65.1378 143.717L42.8168 87.3653C42.245 85.922 43.1831 84.337 44.7209 84.1227C45.7316 83.9816 46.736 83.7636 47.7239 83.4664C49.1759 83.0297 50.6612 84.0126 50.8054 85.5219C51.0387 87.9646 51.9174 91.3608 55.0027 94.336C62.6694 101.729 74.8312 97.99 77.9259 88.7379C78.4586 87.1451 80.4134 86.617 81.7181 87.6743C87.8239 92.6227 97.5251 91.6677 101.927 84.9554C102.415 84.2121 103.333 83.7705 104.392 83.97Z"
+                        fill="#64646A" />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_1_112">
+                        <rect width="150" height="150" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+                <div class="alow__btn-box">
+                  <a href="#" class="button">Discover more</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="order" class="main__order order">
+        <div class="container">
+          <div class="order__inner">
+            <div class="order__img-box">
+              <img src="content/three-grasses.png" alt="" srcset="">
+            </div>
+            <div class="order__content">
+              <div class="order__heading">
+                <h2 class="order__heading-text heading">
+                  Order Your Favourite Coffee
+                </h2>
+                <p class="order__heading-paragraph text-grey">Amet minim mollit non deserunt ullamco est sit aliqua
+                  dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt
+                  nostrud amet.</p>
+              </div>
+              <div class="order__btn">
+                <a href="#" class="button btn-padding">order now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="selling" class="main__selling selling">
+        <div class="container">
+          <div class="selling__inner">
+            <div class="selling__heading">
+              <h2 class="selling__heading-text heading">
+                Best Selling Coffee
+              </h2>
+              <p class="selling__heading-paragraph text-grey">A drink from the ‘My Alowishus’ bottled brews range OR
+                grab one of our delicious coffee’s.</p>
+            </div>
+            <ul class="selling__cards">
+              <a href="" class="selling__cards-link">
+                <li class="selling__cards-item">
+                  <div class="cards__upper">
+                    <div class="cards__image-box">
+                      <img src="content/cards-espresso.png" alt="" srcset="">
+                    </div>
+                    <div class="cards__upper-text">
+                      <p class="item-number">#1 Selling</p>
+                      <p class="item-text">Double
+                        Espresso</p>
+                    </div>
+                  </div>
+                  <div class="cards__middle">
+                    <p class="cards__paragraph">
+                      Amet minim mollit non deserunt dolor ullamco est sit aliqua dolor do amet sint. Velit officia
+                      consequat duis.
+                    </p>
+                  </div>
+                  <div class="cards__btns">
+                    <p class="cards__price">$59.99</p>
+                    <a href="#" class="button">order now</a>
+                  </div>
+                </li>
+              </a>
+              <a href="" class="selling__cards-link">
+                <li class="selling__cards-item">
+                  <div class="cards__upper">
+                    <div class="cards__image-box">
+                      <img src="content/cards-frappe.png" alt="" srcset="">
+                    </div>
+                    <div class="cards__upper-text">
+                      <p class="item-number">#2 Selling</p>
+                      <p class="item-text">Caramel
+                        Frappe</p>
+                    </div>
+                  </div>
+                  <div class="cards__middle">
+                    <p class="cards__paragraph">
+                      Amet minim mollit non deserunt dolor ullamco est sit aliqua dolor do amet sint. Velit officia
+                      consequat duis.
+                    </p>
+                  </div>
+                  <div class="cards__btns">
+                    <p class="cards__price">$59.99</p>
+                    <a href="#" class="button">order now</a>
+                  </div>
+                </li>
+              </a>
+              <a href="" class="selling__cards-link">
+                <li class="selling__cards-item">
+                  <div class="cards__upper">
+                    <div class="cards__image-box">
+                      <img src="content/cards-coffee.png" alt="" srcset="">
+                    </div>
+                    <div class="cards__upper-text">
+                      <p class="item-number">#3 Selling</p>
+                      <p class="item-text">Iced
+                        Coffee</p>
+                    </div>
+                  </div>
+                  <div class="cards__middle">
+                    <p class="cards__paragraph">
+                      Amet minim mollit non deserunt dolor ullamco est sit aliqua dolor do amet sint. Velit officia
+                      consequat duis.
+                    </p>
+                  </div>
+                  <div class="cards__btns">
+                    <p class="cards__price">$59.99</p>
+                    <a href="#" class="button">order now</a>
+                  </div>
+                </li>
+              </a>
+
+            </ul>
+          </div>
+
+        </div>
+      </section>
+      <section id="app" class="main__app app">
+        <div class="container">
+          <div class="app__inner">
+            <div class="app__content">
+              <div class="app-text">
+                <p class="app__heading heading">
+                  Instant Coffee At Your Home
+                </p>
+                <p class="app_paragraph text-grey">
+                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis
+                  enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                </p>
+              </div>
+              <div class="app_btn">
+                <a href="#" class="button">Download our app</a>
+              </div>
+            </div>
+            <div class="app__image-box">
+              <img src="content/mobile.png" alt="" srcset="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="customers" class="main__customers customers">
+        <div class="container container--left">
+          <div class="customers__inner">
+            <div class="customers__slider">
+              <div class="customers_slide">
+                <div class="slider__image-box">
+                  <img src="content/customers-avatar-1.jpg" alt="" srcset="">
+                </div>
+                <div class="slider__info">
+                  <p class="slider__name">Imam White</p>
+                  <div class="slider_rating"></div>
+                </div>
+                <div class="slider__text">
+                  <p class="slider__paragraph text-grey">
+                    “Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
+                    officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet
+                    minim
+                    mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia”
+                  </p>
+                </div>
+              </div>
+              <div class="customers_slide">
+                <div class="slider__image-box">
+                  <img src="content/customers-avatar-2.jpg" alt="" srcset="">
+                </div>
+                <div class="slider__info">
+                  <p class="slider__name">Brooklyn Simmons</p>
+                  <div class="slider_rating"></div>
+                </div>
+                <div class="slider__text">
+                  <p class="slider__paragraph">
+                    “Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
+                    officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet
+                    minim
+                    mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia”
+                  </p>
+                </div>
+              </div>
+              <div class="customers_slide">
+                <div class="slider__image-box">
+                  <img src="content/customers-avatar-1.jpg" alt="" srcset="">
+                </div>
+                <div class="slider__info">
+                  <p class="slider__name">BImam White</p>
+                  <div class="slider_rating"></div>
+                </div>
+                <div class="slider__text">
+                  <p class="slider__paragraph">
+                    “Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
+                    officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet
+                    minim
+                    mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia”
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="customers__content">
+              <div class="customers__heading">
+                <p class="customers__heading-text heading">
+                  What Our Customers Say
+                </p>
+              </div>
+              <div class="customers__rating">
+                <p class="rating-value">4.9</p>
+                <div class="rating-box">
+                  <div class="customers__rating-stars"></div>
+                  <p class="rating-text">
+                    based on 2452+ reviews
+                  </p>
+                </div>
+              </div>
+              <div class="customers__arrows">
+                <a href="#" class="customers__arrow-link slider__arrow-prev">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.75 15H6.25" stroke="black" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M15 6.25L6.25 15L15 23.75" stroke="black" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+                <a href="#" class="customers__arrow-link slider__arrow-next">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.25 15H23.75" stroke="black" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M15 6.25L23.75 15L15 23.75" stroke="black" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="main__contact contact">
+        <div class="container">
+          <div class="contact__inner">
+            <div class="contact__left-part">
+              <div class="left-part__upper">
+                <div class="left-part__image-box">
+                  <img src="content/logo-f.png" alt="" srcset="">
+                </div>
+                <p class="left-part__paragraph">
+                  We made it our mission to create community everyday and grow meaningful, lasting relationships with
+                  our
+                  staff, our suppliers and of course you, our customers.
+                </p>
+              </div>
+              <div class="left-part__bottom">
+                <p class="contact-heading">
+                  Store Locations
+                </p>
+                <p class="left-part__paragraph left-part__paragraph--margin">
+                  Find your nearest Alowishus store with opening hours, location and contact details.
+                </p>
+                <a href="" class="left-part__bottom-link">Find my Alowishus</a>
+              </div>
+            </div>
+            <div class="contact__right-part">
+              <div class="right-part__upper">
+                <p class="contact-heading">
+                  Contact Alowishus!
+                </p>
+                <a href="#" class="right-part__link-mail contact-text">
+                  <div class="contact-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M18.1429 15.1621L15.7979 17.5151C14.8469 18.4694 13.1737 18.49 12.2021 17.5151L9.85699 15.1621L1.43423 23.6122C1.74776 23.7572 2.09344 23.8437 2.46094 23.8437H25.5391C25.9066 23.8437 26.2521 23.7573 26.5655 23.6123L18.1429 15.1621Z"
+                        fill="#64646A" />
+                      <path
+                        d="M25.5391 4.15625H2.46094C2.09344 4.15625 1.74776 4.24277 1.43434 4.38774L10.4346 13.4179C10.4352 13.4185 10.436 13.4186 10.4366 13.4192C10.4372 13.4198 10.4373 13.4206 10.4373 13.4206L13.3638 16.3568C13.6746 16.6677 14.3255 16.6677 14.6363 16.3568L17.5622 13.4211C17.5622 13.4211 17.5629 13.4198 17.5635 13.4192C17.5635 13.4192 17.5649 13.4185 17.5655 13.4179L26.5655 4.38769C26.2521 4.24266 25.9066 4.15625 25.5391 4.15625Z"
+                        fill="#64646A" />
+                      <path
+                        d="M0.261734 5.53491C0.0995312 5.86293 0 6.22704 0 6.61707V21.3827C0 21.7727 0.0994219 22.1368 0.26168 22.4648L8.69903 14.0002L0.261734 5.53491Z"
+                        fill="#64646A" />
+                      <path
+                        d="M27.7383 5.53491L19.301 14.0003L27.7383 22.4651C27.9005 22.1371 28 21.7729 28 21.3828V6.61718C28 6.22704 27.9005 5.86293 27.7383 5.53491Z"
+                        fill="#64646A" />
+                    </svg>
+                  </div>
+                  alowishus@gmai.com
+                </a>
+                <a href="" class="right-part__link-tel contact-text">
+                  <div class="contact-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M22.7082 17.9747C21.8686 17.7941 21.2044 18.1839 20.6162 18.5244C20.0139 18.8752 18.8686 19.8043 18.2121 19.5666C14.851 18.1827 11.6899 15.2408 10.3214 11.8662C10.0802 11.1957 11.005 10.0431 11.3532 9.43371C11.6911 8.84377 12.0729 8.17327 11.8988 7.32736C11.7414 6.5672 9.70621 3.97747 8.98654 3.2693C8.5119 2.80151 8.02566 2.54422 7.52654 2.50263C5.64994 2.42207 3.55409 4.92605 3.18651 5.52507C2.26562 6.8024 2.27079 8.50203 3.20199 10.5629C5.44616 16.0984 13.934 24.4523 19.4902 26.7808C20.5156 27.2603 21.4532 27.5007 22.2955 27.5007C23.1196 27.5007 23.8535 27.2707 24.4843 26.8147C24.9601 26.5404 27.5667 24.3406 27.4984 22.4136C27.4571 21.9223 27.2005 21.4312 26.7388 20.9556C26.0358 20.2292 23.4627 18.1333 22.7082 17.9747Z"
+                        fill="#64646A" />
+                    </svg>
+                  </div>
+
+                  +110 214 214 2451
+                </a>
+                <ul class="right-part__upper-socials">
+                  <a href="" class="upper-socials__link">
+                    <li class="upper-socials__item">
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.7463 26.2462V16.0012H20.2025L20.7163 11.9899H16.7463V9.43494C16.7463 8.27744 17.0688 7.48494 18.73 7.48494H20.835V3.90869C19.8113 3.79869 18.7813 3.74619 17.7513 3.74994C14.6963 3.74994 12.5988 5.61494 12.5988 9.03869V11.9824H9.165V15.9937H12.6063V26.2462H16.7463Z"
+                          fill="#64646A" />
+                      </svg>
+                    </li>
+                  </a>
+                  <a href="" class="upper-socials__link">
+                    <li class="upper-socials__item">
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M26.1838 10.3813C26.17 9.43507 25.995 8.49632 25.66 7.61132C25.0737 6.10007 23.88 4.90507 22.3688 4.32007C21.495 3.99132 20.5713 3.81507 19.6362 3.79507C18.4338 3.74132 18.0525 3.72632 15 3.72632C11.9475 3.72632 11.5563 3.72632 10.3625 3.79507C9.42875 3.81507 8.505 3.99132 7.63125 4.32007C6.12 4.90507 4.925 6.10007 4.34 7.61132C4.01125 8.48507 3.83375 9.40882 3.81625 10.3426C3.7625 11.5463 3.74625 11.9276 3.74625 14.9801C3.74625 18.0326 3.74625 18.4226 3.81625 19.6176C3.835 20.5526 4.01125 21.4751 4.34 22.3513C4.92625 23.8613 6.12 25.0563 7.6325 25.6413C8.5025 25.9813 9.42625 26.1738 10.3638 26.2038C11.5675 26.2576 11.9488 26.2738 15.0013 26.2738C18.0538 26.2738 18.445 26.2738 19.6388 26.2038C20.5725 26.1851 21.4963 26.0088 22.3713 25.6801C23.8825 25.0938 25.0763 23.8988 25.6625 22.3888C25.9913 21.5138 26.1675 20.5913 26.1862 19.6551C26.24 18.4526 26.2562 18.0713 26.2562 15.0176C26.2537 11.9651 26.2538 11.5776 26.1838 10.3813ZM14.9925 20.7526C11.8 20.7526 9.21375 18.1663 9.21375 14.9738C9.21375 11.7813 11.8 9.19507 14.9925 9.19507C18.1825 9.19507 20.7713 11.7813 20.7713 14.9738C20.7713 18.1663 18.1825 20.7526 14.9925 20.7526ZM21.0013 10.3288C20.255 10.3288 19.6537 9.72632 19.6537 8.98132C19.6537 8.23632 20.255 7.63382 21.0013 7.63382C21.745 7.63382 22.3475 8.23632 22.3475 8.98132C22.3475 9.72632 21.745 10.3288 21.0013 10.3288Z"
+                          fill="#64646A" />
+                        <path
+                          d="M14.9925 18.7275C17.0656 18.7275 18.7463 17.0469 18.7463 14.9737C18.7463 12.9006 17.0656 11.22 14.9925 11.22C12.9194 11.22 11.2388 12.9006 11.2388 14.9737C11.2388 17.0469 12.9194 18.7275 14.9925 18.7275Z"
+                          fill="#64646A" />
+                      </svg>
+
+                    </li>
+                  </a>
+                  <a href="" class="upper-socials__link">
+                    <li class="upper-socials__item">
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M24.5412 9.99618C24.5575 10.2149 24.5575 10.4324 24.5575 10.6499C24.5575 17.3062 19.4912 24.9762 10.2325 24.9762C7.38 24.9762 4.73 24.1499 2.5 22.7149C2.905 22.7612 3.295 22.7774 3.71625 22.7774C6.07 22.7774 8.23625 21.9824 9.9675 20.6262C7.75375 20.5799 5.89875 19.1299 5.25875 17.1349C5.57 17.1812 5.8825 17.2124 6.21 17.2124C6.66125 17.2124 7.115 17.1499 7.53625 17.0412C5.2275 16.5737 3.49875 14.5474 3.49875 12.0999V12.0374C4.17 12.4112 4.94875 12.6449 5.77375 12.6762C4.4175 11.7737 3.52875 10.2299 3.52875 8.48368C3.52875 7.54868 3.7775 6.69118 4.21375 5.94368C6.6925 8.99743 10.4187 10.9937 14.5963 11.2124C14.5188 10.8374 14.4712 10.4487 14.4712 10.0587C14.4712 7.28368 16.7162 5.02368 19.5062 5.02368C20.9562 5.02368 22.265 5.63118 23.185 6.61368C24.3225 6.39493 25.4125 5.97368 26.38 5.39743C26.0063 6.56618 25.21 7.54868 24.1663 8.17243C25.18 8.06243 26.1625 7.78243 27.065 7.39243C26.38 8.38993 25.5237 9.27868 24.5412 9.99618Z"
+                          fill="#64646A" />
+                      </svg>
+
+                    </li>
+                  </a>
+                  <a href="" class="upper-socials__link">
+                    <li class="upper-socials__item">
+                      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M6.22874 8.99637C7.73924 8.99637 8.96374 7.77187 8.96374 6.26137C8.96374 4.75087 7.73924 3.52637 6.22874 3.52637C4.71824 3.52637 3.49374 4.75087 3.49374 6.26137C3.49374 7.77187 4.71824 8.99637 6.22874 8.99637Z"
+                          fill="#64646A" />
+                        <path
+                          d="M11.5462 11.0688V26.2426H16.2575V18.7388C16.2575 16.7588 16.63 14.8413 19.085 14.8413C21.5062 14.8413 21.5362 17.1051 21.5362 18.8638V26.2438H26.25V17.9226C26.25 13.8351 25.37 10.6938 20.5925 10.6938C18.2987 10.6938 16.7612 11.9526 16.1325 13.1438H16.0687V11.0688H11.5462ZM3.86874 11.0688H8.58749V26.2426H3.86874V11.0688Z"
+                          fill="#64646A" />
+                      </svg>
+
+                    </li>
+                  </a>
+                </ul>
+              </div>
+              <div class="right-part__bottom">
+                <form class="right-part__bottom-form">
+                  <p class="contact-heading">First One’s On Us!</p>
+                  <input type="email" class="input-email" placeholder="E-mail">
+                  <button class="button form-button" type="submit">subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__left">
+            Copytright © 2022 <span>Alowishus Delicious</span>
+          </div>
+          <div class="footer__right">
+            <p class="footer__right-f footer__text"><a href="#" class="footer-link">Terms of Use</a></p>
+            <p class="footer__right-s footer__text"><a href="#" class="footer-link">Privacy Policy</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="scripts/main.js"></script>
+
+</html>
