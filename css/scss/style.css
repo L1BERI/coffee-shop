@@ -115,13 +115,14 @@ body {
   transform: scale(1);
   bottom: 40px;
   right: 40px;
-  animation: arrow 1s infinite alternate; }
+  animation: arrow 1s 1s infinite alternate;
+  transition: all .8s; }
 
 .goup-btn--active:hover {
-  animation: none; }
+  animation: arrow paused; }
 
 @keyframes arrow {
-  from {
+  to {
     transform: translateY(10%); } }
 .header {
   background: #EEEFF1;
