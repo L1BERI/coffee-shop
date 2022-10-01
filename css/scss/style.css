@@ -968,10 +968,12 @@ body {
       justify-content: center;
       align-items: center; }
     .customers__inner .customers__content .customers__arrows {
-      margin: 40px auto;
+      position: absolute;
+      top: 50%;
+      transform: translateY(50%);
+      width: 435px;
       display: flex;
-      align-items: center;
-      justify-content: center; }
+      justify-content: space-between; }
 
   .contact__inner {
     flex-wrap: wrap;
@@ -1017,6 +1019,17 @@ body {
 
   .alow__inner .alow__cards .alow__cards-item .cards__heading-title {
     text-align: center; }
+
+  .customers__inner .customers__content {
+    width: 420px; }
+    .customers__inner .customers__content .customers__arrows {
+      width: 383px; }
+    .customers__inner .customers__content .customers__arrow-link {
+      transform: scale(0.5); }
+    .customers__inner .customers__content .slider__arrow-prev {
+      transform: translateX(10%) scale(0.5); }
+    .customers__inner .customers__content .slider__arrow-next {
+      transform: translateX(25%) scale(0.5); }
 
   .selling__inner .selling__cards .selling__cards-item {
     flex-wrap: wrap;
