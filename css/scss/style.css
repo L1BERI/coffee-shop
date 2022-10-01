@@ -995,17 +995,22 @@ body {
   .alow__inner .alow__cards .alow__cards-item {
     max-width: 370px; } }
 @media screen and (max-width: 530px) {
-  .body__inner .body__left .body__left-text .body__title::after {
-    right: 30px; }
-  .body__inner .body__left .body__left-text .body__paragraph {
-    margin: 0 auto; }
+  .body__inner .body__left .body__left-text {
+    max-width: 345px; }
+    .body__inner .body__left .body__left-text .body__title::after {
+      right: 30px; }
+    .body__inner .body__left .body__left-text .body__paragraph {
+      width: 100%;
+      margin: 0 20px 0 0; }
   .body__inner .body__left .body__btns-box {
-    flex-direction: column; }
+    flex-direction: column;
+    margin-right: 30px; }
 
   .button {
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    margin: 0 15px; }
 
   .text-grey {
     text-align: center; }
@@ -1022,6 +1027,8 @@ body {
 
   .customers__inner .customers__content {
     width: 420px; }
+    .customers__inner .customers__content .customers__heading {
+      max-width: 380px; }
     .customers__inner .customers__content .customers__arrows {
       width: 383px; }
     .customers__inner .customers__content .customers__arrow-link {

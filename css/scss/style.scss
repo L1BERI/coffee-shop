@@ -1500,15 +1500,17 @@ body {
         .body__title::after {
           right: 30px;
         }
-
+        max-width: 345px;
         .body__paragraph {
-          margin: 0 auto;
+          width: 100%;
+          margin: 0 20px 0 0;
 
         }
       }
 
       .body__btns-box {
         flex-direction: column;
+        margin-right: 30px;
       }
     }
   }
@@ -1517,6 +1519,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 15px;
   }
 
   .text-grey {
@@ -1559,7 +1562,9 @@ body {
   .customers__inner {
     .customers__content {
       width: 420px;
-
+      .customers__heading{
+        max-width: 380px;
+      }
       .customers__arrows {
         width: 383px;
       }
